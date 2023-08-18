@@ -13,26 +13,68 @@ spicy_foods = [
         "name": "Mapo Tofu",
         "cuisine": "Sichuan",
         "heat_level": 6,
-    },
+    }
 ]
 
+
 def get_names(spicy_foods):
-    pass
+    names = [food["name"] for food in spicy_foods]
+    return names
+food_names = get_names(spicy_foods)
+print(food_names)
 
 def get_spiciest_foods(spicy_foods):
-    pass
+    spiciest_foods = [food for food in spicy_foods if food["heat_level"] > 5]
+    return spiciest_foods
+spiciest_food_list = get_spiciest_foods(spicy_foods)
+print(spiciest_food_list)
 
-def print_spicy_foods(spicy_foods):
-    pass
+def get_spicy_food_by_cuisine(spicy_foods, target_cuisine):
+    for food in spicy_foods:
+        if food["cuisine"].lower() == target_cuisine.lower():
+            return food
+    return None
 
-def get_spicy_food_by_cuisine(spicy_foods, cuisine):
-    pass
+# Example usage:
+cuisine_to_search = "Thai"
+spicy_food = get_spicy_food_by_cuisine(spicy_foods, cuisine_to_search)
+
+if spicy_food:
+    print(f"A spicy food from {cuisine_to_search} is found.")
+else:
+    print(f"No spicy food found from {cuisine_to_search}.")
+
+def get_spiciest_foods(spicy_foods):
+    spiciest_foods = [food for food in spicy_foods if food["heat_level"] > 5]
+    return spiciest_foods
 
 def print_spiciest_foods(spicy_foods):
-    pass
+    spiciest_foods = get_spiciest_foods(spicy_foods)
+    
+    for food in spiciest_foods:
+        heat_level_emojis = "🌶" * food["heat_level"]
+        print(f"{food['name']} ({food['cuisine']}) | Heat Level: {heat_level_emojis}.")
 
-def get_average_heat_level(spicy_foods):
-    pass
+# Example usage:
+print_spiciest_foods(spicy_foods)
 
-def create_spicy_food(spicy_foods, spicy_food):
-    pass
+
+def average_heat_level(spicy_foods):
+    total_heat = sum(food["heat_level"] for food in spicy_foods)
+    num_foods = len(spicy_foods)
+    if num_foods == 0:
+        return 0  # To avoid division by zero
+    return total_heat // num_foods
+
+avg_heat = average_heat_level(spicy_foods)
+print(avg_heat)
+
+def print_spicy_foods(spicy_foods):
+    for food in spicy_foods:
+        heat_level_emojis = "🌶" * food["heat_level"]
+        print(f"{food['name']} ({food['cuisine']}) | Heat Level: {heat_level_emojis}")
+
+
+print_spicy_foods(spicy_foods)
+
+
